@@ -14,4 +14,5 @@ with DAG('Our_medium_project_v2',
   
   task_1 = triggerJobOperator('task_1', 32159)
   task_2 = waitJobRunOperator('task_2', 32159)
-  task_1 >> task_2
+  task_3 = notifyErrorIfOneFailedOperator('task_3', 'Error running DBT job')
+  task_1 >> task_2 >> task_3
